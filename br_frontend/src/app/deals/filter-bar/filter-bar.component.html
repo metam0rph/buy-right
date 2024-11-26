@@ -1,0 +1,27 @@
+<div>
+<mat-toolbar color="primary" class="filter-bar">
+  <!-- Category Filter -->
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Category</mat-label>
+    <mat-select [(ngModel)]="selectedCategory" (selectionChange)="onFilterChange()">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- Sort By -->
+  <mat-form-field appearance="fill" class="filter-item">
+    <mat-label>Sort By</mat-label>
+    <mat-select [(ngModel)]="sortBy" (selectionChange)="onFilterChange()">
+      <mat-option value="priceAsc">Price: Low to High</mat-option>
+      <mat-option value="priceDesc">Price: High to Low</mat-option>
+      <mat-option value="rating">Rating</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button color="accent" (click)="clearFilters()" class="clear-btn">
+    Clear Filters
+  </button>
+</mat-toolbar>
+</div>

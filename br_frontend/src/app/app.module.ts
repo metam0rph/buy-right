@@ -16,6 +16,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AboutComponent } from './components/app-layout/header/about/about.component';
 import { ContactComponent } from './components/app-layout/header/contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DealsComponent } from './deals/deals.component';
+import { FilterBarComponent } from './deals/filter-bar/filter-bar.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { CardLayoutComponent } from './deals/card-layout/card-layout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +32,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SidebarComponent,
     HomepageComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    DealsComponent,
+    FilterBarComponent,
+    CardLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule, 
+    FormsModule
   ],
   exports: [
     MatToolbarModule,
