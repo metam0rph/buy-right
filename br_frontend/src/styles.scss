@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ensure the toolbar has no margin or padding */
+  mat-toolbar {
+    margin: 0;
+    padding: 0;
+    background: #3f51b5;  /* Example background color */
+    color: white;
+  }
