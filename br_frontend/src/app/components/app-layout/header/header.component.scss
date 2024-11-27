@@ -5,12 +5,6 @@
   flex-direction: column;
 }
 
-/* Styling for the toolbar */
-.toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
 
 /* Spacer for toolbar alignment */
 .spacer {
@@ -21,31 +15,6 @@
 .sidenav {
   width: 250px;
   background-color: #f4f4f4;
-}
-
-/* Sidenav header styling */
-.sidenav-header {
-  text-align: center;
-  font-weight: bold;
-  color: white;
-}
-
-/* Main content styling */
-.content {
-  padding: 20px;
-  background-color: #fafafa;
-  height: calc(100vh - 64px); /* Adjust for the toolbar height */
-  overflow: auto;
-}
-
-/* Material list item styling */
-mat-nav-list a {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
 }
 
 mat-nav-list a:hover {

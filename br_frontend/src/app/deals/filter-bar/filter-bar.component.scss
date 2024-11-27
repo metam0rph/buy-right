@@ -1,69 +1,28 @@
-/* Toolbar Styling */
-.filter-bar {
-  background-color: #1976d2; /* Primary color for toolbar */
-  padding: 10px 20px; /* Adds padding to the toolbar */
-  display: flex;
-  align-items: bottom;
-  justify-content: space-between;
-  border-radius: 8px;
+@media (max-width: 768px){
+.filter-item{
+  width: 40%;
 }
-
-/* Styling the filter items (mat-form-field) */
-.filter-item {
-  margin-right: 20px; /* Adds spacing between form fields */
-  width: 250px; /* Sets a consistent width for the form fields */
 }
-
-/* Clear Filters button styling */
-.clear-btn {
-  margin-left: 20px; /* Adds space between button and filter */
-  font-weight: bold;
-  border-radius: 20px;
+.filter-item{
+  padding-right: 20px;
 }
-
 /* Hover effect for button */
 .clear-btn:hover {
   background-color: #ff4081; /* Accent color for hover effect */
   color: white;
   transition: all 0.3s ease;
 }
+// .large-icon {
+//   font-size: 36px; /* Adjust icon size */
+// }
 
-/* Styling for form field labels */
-.mat-form-field label {
-  font-size: 1rem;
-  color: white;
+.large-icon-button {
+  width: 56px; /* Adjust button size */
+  height: 56px;
 }
-
-/* Adjusting select field font size */
-.mat-select {
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Adjusting the background of the mat-select */
-.mat-select-trigger {
-  background-color: #f1f1f1; /* Lighter background for the select trigger */
-}
-
-/* Optional: Add focus and hover effects on mat-select */
-.mat-select:hover .mat-select-trigger {
-  background-color: #cce5ff;
-}
-
-.mat-select-focused .mat-select-trigger {
-  background-color: #b3d9ff; /* Slightly darker blue when focused */
-}
-
-/* Responsive design adjustments */
-@media (max-width: 768px) {
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .filter-item {
-    margin-right: 0;
-    margin-bottom: 10px;
-    width: 100%;
-  }
+.mat-icon{
+  height: 24px !important;
+  width: 24px !important;
+  padding: 0;
+  // overflow: visible !important;
 }
