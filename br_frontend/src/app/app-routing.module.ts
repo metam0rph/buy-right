@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component'; 
 import { AboutComponent } from './components/app-layout/header/about/about.component';
 import { ContactComponent } from './components/app-layout/header/contact/contact.component';
-import { DealsComponent } from './deals/deals.component';
+import { DealsComponent } from './components/deals/deals.component'; 
+import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'deals', component: DealsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'test', component: TestComponent },
   { path: '**', redirectTo: '' },
 ];
 

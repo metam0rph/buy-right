@@ -1,0 +1,36 @@
+
+
+/* Styling the filter items (mat-form-field) */
+.filter-item {
+  margin-right: 20px; /* Adds spacing between form fields */
+  width: 250px; /* Sets a consistent width for the form fields */
+}
+
+/* Clear Filters button styling */
+.clear-btn {
+  margin-left: 20px; /* Adds space between button and filter */
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+/* Hover effect for button */
+.clear-btn:hover {
+  background-color: #ff4081; /* Accent color for hover effect */
+  color: white;
+  transition: all 0.3s ease;
+}
+
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-item {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+}
