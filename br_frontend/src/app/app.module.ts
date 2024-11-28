@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/app-layout/header/header.component';
 import { FooterComponent } from './components/app-layout/footer/footer.component';
-import { SidebarComponent } from './components/app-layout/sidebar/sidebar.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -29,7 +28,6 @@ import { CardLayoutComponent } from './deals/card-layout/card-layout.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent,
     HomepageComponent,
     AboutComponent,
     ContactComponent,

@@ -1,29 +1,33 @@
 <div>
-<mat-toolbar color="primary" class="filter-bar">
-  <!-- Category Filter -->
-  <mat-form-field appearance="fill" class="filter-item">
-    <mat-label>Category</mat-label>
-    <mat-select [(ngModel)]="selectedCategory" (selectionChange)="onFilterChange()">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{ category }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <mat-toolbar color="primary" class="filter-bar">
+    <div >
+      <mat-form-field appearance="fill" class="filter-item " style="margin-left: 5px;">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" (selectionChange)="onFilterChange()">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
   <!-- Sort By -->
-  <mat-form-field appearance="fill" class="filter-item">
-    <mat-label>Sort By</mat-label>
-    <mat-select [(ngModel)]="sortBy" (selectionChange)="onFilterChange()">
-      <mat-option value="priceAsc">Price: Low to High</mat-option>
-      <mat-option value="priceDesc">Price: High to Low</mat-option>
-      <mat-option value="rating">Rating</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <button mat-icon-button color="accent" (click)="clearFilters()" aria-label="Clear filters" class="large-icon-button">
-    <mat-icon class="large-icon">delete</mat-icon>
+  <div>
+    <mat-form-field appearance="fill" class="filter-item ">
+      <mat-label>Sort By</mat-label>
+      <mat-select [(ngModel)]="sortBy" (selectionChange)="onFilterChange()">
+        <mat-option value="priceAsc">Price: Low to High</mat-option>
+        <mat-option value="priceDesc">Price: High to Low</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+  <button mat-icon-button color="accent" (click)="clearFilters()" aria-label="Clear filters" style="margin-bottom: 15px;">
+    <mat-icon >delete</mat-icon>
   </button>
-  
+</div>
   
 </mat-toolbar>
+
 </div>

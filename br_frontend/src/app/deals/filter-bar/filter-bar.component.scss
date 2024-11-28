@@ -4,7 +4,7 @@
 }
 }
 .filter-item{
-  padding-right: 20px;
+  margin-left: 20px;
 }
 /* Hover effect for button */
 .clear-btn:hover {
@@ -12,17 +12,10 @@
   color: white;
   transition: all 0.3s ease;
 }
-// .large-icon {
-//   font-size: 36px; /* Adjust icon size */
-// }
 
-.large-icon-button {
-  width: 56px; /* Adjust button size */
-  height: 56px;
-}
-.mat-icon{
-  height: 24px !important;
-  width: 24px !important;
-  padding: 0;
-  // overflow: visible !important;
+.clear-btn {
+  vertical-align: middle; /* Aligns button with text fields */
+  padding: 0; /* Remove extra padding */
+  margin-top: 0; /* Adjust margin if needed */
+  margin-bottom: 0;
 }
