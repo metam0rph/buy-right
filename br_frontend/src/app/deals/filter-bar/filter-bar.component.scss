@@ -14,8 +14,13 @@
 }
 
 .clear-btn {
-  vertical-align: middle; /* Aligns button with text fields */
+  vertical-align: middle;
+  margin-left: 20px;/* Aligns button with text fields */
   padding: 0; /* Remove extra padding */
   margin-top: 0; /* Adjust margin if needed */
   margin-bottom: 0;
+}
+
+.filter-bar{
+  padding-bottom: 15px;
 }
