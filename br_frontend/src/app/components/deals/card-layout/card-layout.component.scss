@@ -5,6 +5,18 @@
     padding: 20px;
   }
   
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(2, minmax(150px, 1fr)); /* Adjust column width for mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr); /* Keep two columns even for very small screens */
+    }
+  }
+  
   .product-card {
     background: #fff;
     padding: 15px;
