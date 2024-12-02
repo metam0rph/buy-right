@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './card-layout.component.scss'
 })
 export class CardLayoutComponent {
-  
+
   @Input() products: any[] = [];
   @Input() filteredProducts: any[] = [];
   product = {
