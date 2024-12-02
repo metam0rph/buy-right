@@ -22,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CardLayoutComponent } from './deals/card-layout/card-layout.component';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CardLayoutComponent } from './deals/card-layout/card-layout.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule, 
-    FormsModule
+    FormsModule,
+    MatCardModule,
   ],
   exports: [
     MatToolbarModule,

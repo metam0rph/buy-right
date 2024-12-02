@@ -1,8 +1,18 @@
-<div class="product-container">
-  <div class="product-card" *ngFor="let product of filteredProducts">
-    <h3>{{ product.name }}</h3>
-    <p>Category: {{ product.category }}</p>
-    <p>Price: ₹{{ product.price }}</p>
-    <p>Rating: {{ product.rating }} ★</p>
-  </div>
-</div>
+<mat-card class="product-card">
+  <img mat-card-image [src]="product.image" alt="Product image" />
+  <mat-card-content>
+    <h3 class="product-title">{{ product.name }}</h3>
+    <div class="rating">
+      <mat-icon *ngFor="let star of stars">star</mat-icon>
+    </div>
+    <div class="price-info">
+      <span class="price">₹{{ product.discountedPrice }}</span>
+      <span class="original-price">₹{{ product.originalPrice }}</span>
+      <span class="discount">({{ product.discountPercentage }}% off)</span>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Add to Cart</button>
+    <button mat-button color="accent">View Details</button>
+  </mat-card-actions>
+</mat-card>
