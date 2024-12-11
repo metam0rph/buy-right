@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Product } from '../../../models/products';
 
 @Component({
   selector: 'app-card-layout',
@@ -7,16 +8,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CardLayoutComponent {
 
-  @Input() products: any[] = [];
-  @Input() filteredProducts: any[] = [];
-  product = {
-    name: 'Stylish Headphones',
-    image: 'assets/images/flower.jpg', // Replace with product image URL
-    originalPrice: 2000,
-    discountedPrice: 1500,
-    discountPercentage: 25,
-    rating: 4.5,
-  };
+  @Input() product!: Product;
 
   get stars() {
     const fullStars = Math.floor(this.product.rating);

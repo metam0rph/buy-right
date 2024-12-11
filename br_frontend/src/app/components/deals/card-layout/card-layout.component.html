@@ -1,12 +1,12 @@
 <mat-card class="product-card">
-  <img mat-card-image [src]="product.image" alt="Product image" />
+  <img mat-card-image [src]="product.imageUrl" alt="Product image" />
   <mat-card-content>
     <h3 class="product-title">{{ product.name }}</h3>
     <div class="rating">
       <mat-icon *ngFor="let star of stars">star</mat-icon>
     </div>
     <div class="price-info">
-      <span class="price">₹{{ product.discountedPrice }}</span>
+      <span class="price">₹{{ product.getDiscountedPrice() }}</span>
       <span class="original-price">₹{{ product.originalPrice }}</span>
       <span class="discount">({{ product.discountPercentage }}% off)</span>
     </div>
