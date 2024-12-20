@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CardLayoutComponent } from './components/deals/card-layout/card-layout.component';
 import { MatCardModule } from '@angular/material/card';
+import { ProductsComponent } from './components/deals/products/products.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatCardModule } from '@angular/material/card';
     ContactComponent,
     DealsComponent,
     FilterBarComponent,
-    CardLayoutComponent
+    CardLayoutComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
