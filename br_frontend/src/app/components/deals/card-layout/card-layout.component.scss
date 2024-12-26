@@ -3,8 +3,7 @@
 
 .product-card {
   max-width: 250px;
-  margin: 10px 10px 10px 10px;
-  border-radius: 8px;
+  margin: 5px 5px 5px 5px;
   overflow: hidden;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   @media only screen and (max-width: 480px) {
@@ -37,7 +36,7 @@
   align-items: baseline;
   gap: 8px;
   @media only screen and (max-width: 480px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin: 4px 0;
     }
 }
@@ -70,3 +69,26 @@ mat-card-actions {
     }
 }
 
+button{
+  @media only screen and (max-width: 480px) {
+  font-size: 0.8rem;
+  }
+}
+.buy-now {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0 10px 0 10px;
+}
+
+.icon-button {
+  padding: 0;
+  min-width: 40px;
+}
+
+.fav-btn{
+  margin-left: 5px;
+}
+
+.icon{
+  margin: 0 !important; 
+}

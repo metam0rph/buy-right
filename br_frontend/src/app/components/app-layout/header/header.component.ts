@@ -6,13 +6,13 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  opened: boolean = true;
+  opened: boolean = false;
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    // Close the sidenav for mobile devices
-    this.breakpointObserver.observe([Breakpoints.Handset]).subscribe(result => {
-      this.opened = !result.matches; // Close if on mobile
+    this.breakpointObserver.observe([Breakpoints.WebLandscape])
+    .subscribe(result => {
+      this.opened = result.matches; // Open sidenav on WebLandscape (larger screens)
     });
   }
   toggleSidenav(): void {
