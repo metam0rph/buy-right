@@ -16,29 +16,22 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <!-- Sidebar -->
   <mat-sidenav #sidenav mode="side" position="start" [(opened)]="opened" class="sidenav">
     <mat-nav-list>
       <a mat-list-item routerLink="deals">
-        <mat-icon>Deals</mat-icon>
+        <img src="/assets/images/deal.ico" alt="Deals Icon" class="custom-icon" />
         <span>Deals</span>
       </a>
-      <a mat-list-item href="#">
-        <mat-icon>info</mat-icon>
+      <a mat-list-item href="/about">
+        <mat-icon class="custom-icon">info</mat-icon>
         <span>About</span>
-      </a>
-      <a mat-list-item href="#">
-        <mat-icon>contact_mail</mat-icon>
-        <span>Contact</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
-
-  <!-- Main Content -->
   <mat-sidenav-content>
     <div class="content">
-      
-<router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+

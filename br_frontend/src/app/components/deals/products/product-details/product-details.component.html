@@ -1,0 +1,44 @@
+<!-- product-display.component.html -->
+<div class="product-container">
+  <div class="carousel-wrapper">
+    <ngu-carousel 
+      [inputs]="carouselConfig" 
+      [dataSource]="product.imageUrl" 
+      #productCarousel
+      class="product-carousel">
+      <ng-template nguCarouselDef let-item>
+        <div class="carousel-slide">
+          <div class="image-container">
+            <img [src]="item" [alt]="product.name" class="product-image">
+          </div>
+        </div>
+      </ng-template>
+      
+      <button NguCarouselPrev class="carousel-control carousel-control-prev">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <button NguCarouselNext class="carousel-control carousel-control-next">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </ngu-carousel>
+  </div>
+
+  <div class="product-info">
+    <h1 class="product-name">{{ product.name }}</h1>
+    <p class="product-description">{{ product.description }}</p>
+    
+    <div class="product-price">
+      <span class="discounted-price">₹{{ product.getDiscountedPrice() | number: '1.2-2' }}</span>
+      <span class="original-price">₹{{ product.originalPrice | number: '1.2-2' }}</span>
+      <span class="discount-badge">{{ product.discountPercentage }}% OFF</span>
+    </div>
+    
+    <div class="product-rating">
+      <mat-icon *ngFor="let star of getStars(product.rating)" class="star-icon">star</mat-icon>
+    </div>
+    
+    <button mat-raised-button color="primary" class="buy-now-button">
+      Buy Now
+    </button>
+  </div>
+</div>

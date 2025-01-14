@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from '../../models/products';
+import { Product } from '../../models/product';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-deals',
@@ -7,17 +8,13 @@ import { Product } from '../../models/products';
   styleUrl: './deals.component.scss'
 })
 export class DealsComponent {
-  products:Product[] = [
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',2000,10,'Stylish Headphones',"electronics",4.5),
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',1000,10,'Stylish Headphones',"toys",4.5),
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',3000,10,'Stylish Headphones',"music",2.5),
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',3000,10,'Stylish Headphones',"music",2.5),
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',3000,10,'Stylish Headphones',"music",2.5),
-    new Product('1','Stylish Headphones','ssets/images/flower.jpg',3000,10,'Stylish Headphones',"music",2.5)
-  ];
+  constructor(productsService:ProductsService ){
+    this.products = productsService.getProducts();
+    this.filteredProducts = this.products;
+  }
+  products: Product[];
 
-  filteredProducts = [...this.products];
-
+  filteredProducts: Product[];
   onFiltersChanged(filters: any): void {
     let filtered = [...this.products];
 

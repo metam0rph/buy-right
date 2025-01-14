@@ -13,7 +13,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AboutComponent } from './components/app-layout/header/about/about.component';
-import { ContactComponent } from './components/app-layout/header/contact/contact.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DealsComponent } from './components/deals/deals.component';
 import { FilterBarComponent } from './components/deals/filter-bar/filter-bar.component';
@@ -24,6 +23,15 @@ import { FormsModule } from '@angular/forms';
 import { CardLayoutComponent } from './components/deals/card-layout/card-layout.component';
 import { MatCardModule } from '@angular/material/card';
 import { ProductsComponent } from './components/deals/products/products.component';
+import { ProductDetailsComponent } from './components/deals/products/product-details/product-details.component';
+import {
+  NguCarousel,
+  NguCarouselDefDirective,
+  NguCarouselNextDirective,
+  NguCarouselPrevDirective,
+  NguItemComponent,
+  NguTileComponent,
+} from '@ngu/carousel';
 
 @NgModule({
   declarations: [
@@ -32,11 +40,11 @@ import { ProductsComponent } from './components/deals/products/products.componen
     FooterComponent,
     HomepageComponent,
     AboutComponent,
-    ContactComponent,
     DealsComponent,
     FilterBarComponent,
     CardLayoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +60,13 @@ import { ProductsComponent } from './components/deals/products/products.componen
     MatSelectModule,
     FormsModule,
     MatCardModule,
+    NguCarousel, 
+    NguTileComponent,   
+    NguCarousel,
+    NguCarouselDefDirective,
+    NguCarouselNextDirective,
+    NguCarouselPrevDirective,
+    NguItemComponent
   ],
   exports: [
     MatToolbarModule,

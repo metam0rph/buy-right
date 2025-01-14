@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-filter-bar',
@@ -6,10 +7,12 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './filter-bar.component.scss'
 })
 export class FilterBarComponent {
-
+  constructor(categorieService:CategoryService){
+    this.categories = categorieService.getCategories();
+  }
   @Output() filtersChanged = new EventEmitter<any>();
 
-  categories: string[] = ['Electronics', 'Clothing', 'Books', 'Appliances'];
+  categories: string[];
   selectedCategory: string | null = null;
   sortBy: string | null = null;
 

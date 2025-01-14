@@ -1,6 +1,3 @@
-
-
-
 .product-card {
   max-width: 250px;
   margin: 5px 5px 5px 5px;
@@ -44,7 +41,7 @@
 .price {
   font-size: 1.4rem;
   font-weight: bold;
-  color: #2e7d32; /* Green for discounted price */
+  color: #333; /* Green for discounted price */
   @media only screen and (max-width: 480px) {
     font-size: 1rem;
     }
@@ -56,8 +53,11 @@
 }
 
 .discount {
-  color: #d32f2f; /* Red for discount percentage */
-  font-weight: bold;
+  background: #4CAF50;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
 }
 
 mat-card-actions {

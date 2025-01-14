@@ -2,7 +2,7 @@
 export class Product{
     id:string;
     name:string;
-    imageUrl: string
+    imageUrl: string[]
     originalPrice:number;
     discountPercentage:number;
     description: string;
@@ -12,7 +12,7 @@ export class Product{
     constructor(
         id:string,
     name:string,
-    imageUrl: string,
+    imageUrl: string[],
     originalPrice:number,
     discountPercentage:number,
     description: string,

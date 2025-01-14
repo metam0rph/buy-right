@@ -1,1 +1,31 @@
-<p>about works!</p>
+
+<div class="about-container">
+
+  <section class="company-overview" @fadeIn>
+    <div class="container">
+      <h2>About</h2>
+      <div class="story-content">
+        <div class="text-content">
+          <p>{{ companyHistory }}</p>
+        </div>
+        <div class="stats">
+          <div class="stat-item" *ngFor="let stat of companyStats">
+            <div class="stat-value">{{ stat.value }}</div>
+            <div class="stat-label">{{ stat.label }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-cta" @fadeIn>
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Let's create something amazing together</p>
+      <button (click)="navigateToContact()" class="cta-button">
+        Get in Touch
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </section>
+</div>
