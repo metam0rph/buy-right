@@ -1,0 +1,195 @@
+-- Connect to the database
+\c ecommerce_db
+
+-- User Service Tables
+SET search_path TO user_service;
+
+CREATE TABLE users (
+    id BIGSERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    phone VARCHAR(20),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE addresses (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT REFERENCES users(id),
+    address_type VARCHAR(50), -- BILLING, SHIPPING
+    street_address VARCHAR(255),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    country VARCHAR(100),
+    postal_code VARCHAR(20),
+    is_default BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE roles (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE user_roles (
+    user_id BIGINT REFERENCES users(id),
+    role_id INT REFERENCES roles(id),
+    PRIMARY KEY (user_id, role_id)
+);
+
+-- Product Service Tables
+SET search_path TO product_service;
+
+CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    parent_id INT REFERENCES categories(id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+    id BIGSERIAL PRIMARY KEY,
+    sku VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    category_id INT REFERENCES categories(id),
+    stock_quantity INT NOT NULL DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product_images (
+    id BIGSERIAL PRIMARY KEY,
+    product_id BIGINT REFERENCES products(id),
+    image_url VARCHAR(255) NOT NULL,
+    is_primary BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Order Service Tables
+SET search_path TO order_service;
+
+CREATE TABLE orders (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    status VARCHAR(50) NOT NULL, -- PENDING, CONFIRMED, SHIPPED, DELIVERED, CANCELLED
+    total_amount DECIMAL(10,2) NOT NULL,
+    shipping_address_id BIGINT NOT NULL,
+    billing_address_id BIGINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_items (
+    id BIGSERIAL PRIMARY KEY,
+    order_id BIGINT REFERENCES orders(id),
+    product_id BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,
+    total_price DECIMAL(10,2) NOT NULL
+);
+
+-- Payment Service Tables
+SET search_path TO payment_service;
+
+CREATE TABLE payments (
+    id BIGSERIAL PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    status VARCHAR(50) NOT NULL, -- PENDING, COMPLETED, FAILED, REFUNDED
+    payment_method VARCHAR(50) NOT NULL, -- CREDIT_CARD, PAYPAL, etc.
+    transaction_id VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE payment_methods (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    payment_type VARCHAR(50) NOT NULL,
+    provider VARCHAR(50) NOT NULL,
+    account_number VARCHAR(255), -- Encrypted
+    expiry_date VARCHAR(10),
+    is_default BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Cart Service Tables
+SET search_path TO cart_service;
+
+CREATE TABLE carts (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE cart_items (
+    id BIGSERIAL PRIMARY KEY,
+    cart_id BIGINT REFERENCES carts(id),
+    product_id BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Review Service Tables
+SET search_path TO review_service;
+
+CREATE TABLE reviews (
+    id BIGSERIAL PRIMARY KEY,
+    product_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    comment TEXT,
+    status VARCHAR(50) DEFAULT 'PENDING', -- PENDING, APPROVED, REJECTED
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Notification Service Tables
+SET search_path TO notification_service;
+
+CREATE TABLE notifications (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    type VARCHAR(50) NOT NULL, -- EMAIL, SMS, PUSH
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    status VARCHAR(50) DEFAULT 'PENDING', -- PENDING, SENT, FAILED
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE notification_preferences (
+    id BIGSERIAL PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    notification_type VARCHAR(50) NOT NULL,
+    enabled BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Shipping Service Tables
+SET search_path TO shipping_service;
+
+CREATE TABLE shipments (
+    id BIGSERIAL PRIMARY KEY,
+    order_id BIGINT NOT NULL,
+    carrier VARCHAR(100) NOT NULL,
+    tracking_number VARCHAR(100),
+    status VARCHAR(50) NOT NULL, -- PENDING, SHIPPED, DELIVERED
+    estimated_delivery TIMESTAMP,
+    actual_delivery TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Create indexes for better performance
+CREATE INDEX idx_users_email ON user_service.users(email);
+CREATE INDEX idx_products_sku ON product_service.products(sku);
+CREATE INDEX idx_orders_user_id ON order_service.orders(user_id);
+CREATE INDEX idx_payments_order_id ON payment_service.payments(order_id);
+CREATE INDEX idx_cart_items_cart_id ON cart_service.cart_items(cart_id);
+CREATE INDEX idx_reviews_product_id ON review_service.reviews(product_id);
+CREATE INDEX idx_shipments_order_id ON shipping_service.shipments(order_id);

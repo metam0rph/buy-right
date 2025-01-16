@@ -1,0 +1,57 @@
+-- Create the main database
+CREATE DATABASE ecommerce_db;
+
+-- Connect to the database
+\c ecommerce_db
+
+-- User Management Service Schema
+CREATE SCHEMA user_service;
+COMMENT ON SCHEMA user_service IS 'Handles user authentication, profiles, and preferences';
+
+-- Product Service Schema
+CREATE SCHEMA product_service;
+COMMENT ON SCHEMA product_service IS 'Manages product catalog, categories, and inventory';
+
+-- Order Service Schema
+CREATE SCHEMA order_service;
+COMMENT ON SCHEMA order_service IS 'Handles order processing, history, and status';
+
+-- Payment Service Schema
+CREATE SCHEMA payment_service;
+COMMENT ON SCHEMA payment_service IS 'Manages payments, refunds, and payment methods';
+
+-- Cart Service Schema
+CREATE SCHEMA cart_service;
+COMMENT ON SCHEMA cart_service IS 'Handles shopping cart operations';
+
+-- Review Service Schema
+CREATE SCHEMA review_service;
+COMMENT ON SCHEMA review_service IS 'Manages product reviews and ratings';
+
+-- Notification Service Schema
+CREATE SCHEMA notification_service;
+COMMENT ON SCHEMA notification_service IS 'Handles emails, SMS, and push notifications';
+
+-- Shipping Service Schema
+CREATE SCHEMA shipping_service;
+COMMENT ON SCHEMA shipping_service IS 'Manages shipping, tracking, and delivery';
+
+-- Create application users with limited permissions
+CREATE USER user_service_app WITH PASSWORD 'user123';
+CREATE USER product_service_app WITH PASSWORD 'product123';
+CREATE USER order_service_app WITH PASSWORD 'order123';
+CREATE USER payment_service_app WITH PASSWORD 'payment123';
+CREATE USER cart_service_app WITH PASSWORD 'cart123';
+CREATE USER review_service_app WITH PASSWORD 'review123';
+CREATE USER notification_service_app WITH PASSWORD 'notification123';
+CREATE USER shipping_service_app WITH PASSWORD 'shipping123';
+
+-- Grant permissions
+GRANT USAGE ON SCHEMA user_service TO user_service_app;
+GRANT USAGE ON SCHEMA product_service TO product_service_app;
+GRANT USAGE ON SCHEMA order_service TO order_service_app;
+GRANT USAGE ON SCHEMA payment_service TO payment_service_app;
+GRANT USAGE ON SCHEMA cart_service TO cart_service_app;
+GRANT USAGE ON SCHEMA review_service TO review_service_app;
+GRANT USAGE ON SCHEMA notification_service TO notification_service_app;
+GRANT USAGE ON SCHEMA shipping_service TO shipping_service_app;
