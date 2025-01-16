@@ -27,9 +27,9 @@ export class ProductDetailsComponent implements OnInit {
       '1',
       'Sample Product',
       [
-        'assets/images/flower.jpg',
-        'assets/images/flower.jpg',
-        'assets/images/flower.jpg',
+        'assets/images/teddy.jpg',
+        'assets/images/teddy.jpg',
+        'assets/images/teddy.jpg',
       ],
       5000,
       20,

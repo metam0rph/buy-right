@@ -9,14 +9,17 @@
 }
 
 .product-card img {
-  height: 150px;
-  object-fit: cover;
+  height: 250px;
+  @media only screen and (max-width: 480px) {
+    height: 150px;
+    }
+  object-fit: cover ;
 }
 
 .product-card .product-title {
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 8px 0;
+  margin: 5px 0;
   @media only screen and (max-width: 480px) {
     font-size: 1rem;
     margin: 4px 0;
@@ -25,15 +28,15 @@
 
 .rating {
   color: #ffc107; /* Yellow for stars */
-  margin-bottom: 8px;
 }
 
 .price-info {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 1.2rem;
   @media only screen and (max-width: 480px) {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    gap: 0.6rem;
     margin: 4px 0;
     }
 }
@@ -55,9 +58,12 @@
 .discount {
   background: #4CAF50;
   color: white;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 0.25rem;
   border-radius: 4px;
   font-size: 0.9rem;
+  @media only screen and (max-width: 480px) {
+  font-size: 0.7rem;
+  }
 }
 
 mat-card-actions {
@@ -91,4 +97,8 @@ button{
 
 .icon{
   margin: 0 !important; 
+}
+
+.custom-actions{
+  margin-top: 0px;
 }
