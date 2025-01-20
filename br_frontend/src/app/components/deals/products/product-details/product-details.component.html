@@ -36,9 +36,13 @@
     <div class="product-rating">
       <mat-icon *ngFor="let star of getStars(product.rating)" class="star-icon">star</mat-icon>
     </div>
-    
-    <button mat-raised-button color="primary" class="buy-now-button">
-      Buy Now
-    </button>
+    <div class="button-group">
+      <button mat-raised-button color="primary" class="buy-now-button">
+        Buy Now
+      </button>
+      <button mat-raised-button color="primary" class="buy-now-button">
+        Add To Cart
+      </button>
+    </div>
   </div>
 </div>

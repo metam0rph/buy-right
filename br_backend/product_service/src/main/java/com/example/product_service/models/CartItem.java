@@ -1,4 +1,4 @@
-package com.metam0rph.cart_service.models;
+package com.example.product_service.models;
 
 public class CartItem {
     int quantity;

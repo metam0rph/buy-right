@@ -1,8 +1,3 @@
--- Create the main database
-CREATE DATABASE ecommerce_db;
-
--- Connect to the database
-\c ecommerce_db
 
 -- User Management Service Schema
 CREATE SCHEMA user_service;

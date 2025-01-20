@@ -1,5 +1,6 @@
 package com.metam0rph.cart_service.models;
 
-public class Cart {
-    String
+public class CartItem {
+    int quantity;
+    Product product;
 }

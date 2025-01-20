@@ -1,4 +1,4 @@
-package com.metam0rph.cart_service.models;
+package com.example.product_service.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

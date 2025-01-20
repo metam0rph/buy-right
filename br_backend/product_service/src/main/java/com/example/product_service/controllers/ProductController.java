@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Product")
-public class CartController {
+public class ProductController {
     @RequestMapping("/getItems")
     List<Product> getProducts(){
         return Arrays.asList(new Product());

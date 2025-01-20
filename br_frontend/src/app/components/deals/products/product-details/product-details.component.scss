@@ -140,8 +140,13 @@
     }
   }
   
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+
   .buy-now-button {
-    width: 100%;
+    width: 49%;
     padding: 1rem;
     font-size: 1.1rem;
     text-transform: uppercase;
