@@ -27,13 +27,11 @@
         .carousel-slide {
           width: 100% !important; /* Force single slide width */
           flex: 0 0 100% !important; /* Prevent slide shrinking */
-          padding: 1rem;
           
           .image-container {
             aspect-ratio: 1;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             
             .product-image {
               width: 100%;
