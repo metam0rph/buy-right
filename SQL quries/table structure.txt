@@ -39,7 +39,7 @@ CREATE TABLE user_roles (
 -- Product Service Tables
 SET search_path TO product_service;
 
-CREATE TABLE categories (
+CREATE TABLE product_service.categories (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     description TEXT,
@@ -47,7 +47,7 @@ CREATE TABLE categories (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE products (
+CREATE TABLE product_service.products (
     id BIGSERIAL PRIMARY KEY,
     sku VARCHAR(50) UNIQUE NOT NULL,
     name VARCHAR(255) NOT NULL,
@@ -59,9 +59,9 @@ CREATE TABLE products (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE product_images (
+CREATE TABLE product_service.product_images (
     id BIGSERIAL PRIMARY KEY,
-    product_id BIGINT REFERENCES products(id),
+    product_id BIGINT REFERENCES product_service.products(id),
     image_url VARCHAR(255) NOT NULL,
     is_primary BOOLEAN DEFAULT false,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP

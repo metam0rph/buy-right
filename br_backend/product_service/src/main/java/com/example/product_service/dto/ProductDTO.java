@@ -1,11 +1,9 @@
-package com.example.product_service.models;
+package com.example.product_service.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
-@AllArgsConstructor
-@NoArgsConstructor
-public class Product {
+@Data
+public class ProductDTO {
     private Long id;
     private String sku;
     private String imageUrl[];
