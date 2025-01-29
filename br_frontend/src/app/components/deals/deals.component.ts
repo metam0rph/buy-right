@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../services/products.service';
 
@@ -7,33 +7,49 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './deals.component.html',
   styleUrl: './deals.component.scss'
 })
-export class DealsComponent {
-  constructor(productsService:ProductsService ){
-    this.products = productsService.getProducts();
-    this.filteredProducts = this.products;
-  }
-  products: Product[];
+export class DealsComponent implements OnInit {
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
 
-  filteredProducts: Product[];
+  constructor(private productService: ProductsService) {}
+
+  ngOnInit(): void {
+    // this.loadProducts();
+  }
+
+  loadProducts(): void {
+    this.productService.getProducts().subscribe({
+      next: (data: Product[]) => {
+        this.products = data;
+        this.filteredProducts = [...data]; // Using spread operator for new reference
+      },
+      error: (error: Error) => { // Typed the error parameter
+        console.error('Error fetching products:', error);
+      }
+    });
+  }
+
   onFiltersChanged(filters: any): void {
+    if (!this.products?.length) return; // Better check for empty array
+
     let filtered = [...this.products];
 
-    if (filters.category) {
+    if (filters?.category) { // Added null check
       filtered = filtered.filter(
         (product) => product.category === filters.category
       );
     }
 
-    if (filters.sort) {
+    if (filters?.sort) { // Added null check
       switch (filters.sort) {
         case 'priceAsc':
-          filtered.sort((a, b) => a.getDiscountedPrice() - b.getDiscountedPrice());
+          filtered.sort((a, b) => (a.getDiscountedPrice() || 0) - (b.getDiscountedPrice() || 0));
           break;
         case 'priceDesc':
-          filtered.sort((a, b) => b.getDiscountedPrice() - a.getDiscountedPrice());
+          filtered.sort((a, b) => (b.getDiscountedPrice() || 0) - (a.getDiscountedPrice() || 0));
           break;
         case 'rating':
-          filtered.sort((a, b) => b.rating - a.rating);
+          filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
           break;
       }
     }
