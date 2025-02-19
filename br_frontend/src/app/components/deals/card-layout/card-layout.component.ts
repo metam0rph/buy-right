@@ -1,18 +1,19 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../../../models/product';
 import { Router } from '@angular/router';
+import { CartService } from '../../../services/cart.service';
 
 @Component({
   selector: 'app-card-layout',
   templateUrl: './card-layout.component.html',
   styleUrl: './card-layout.component.scss'
 })
-export class CardLayoutComponent {
+export class CardLayoutComponent{
   
   @Input() product!: Product;
   @Output() addToWishlist = new EventEmitter<Product>();
 
-  constructor (private router: Router){}
+  constructor (private router: Router, private cartService: CartService){}
   getStars(rating: number): number[] {
     return Array(Math.round(rating)).fill(0);
   }
@@ -24,15 +25,15 @@ export class CardLayoutComponent {
 
   toggleFavorite(event: Event): void {
     event.stopPropagation();
-    // Implement favorite toggle logic
+    this.cartService.addToFavorites();
   }
 
   addToCart(event: Event): void {
     event.stopPropagation();
-    // Implement add to cart logic
+    this.cartService.addToCart();
   }
 
   navigateToDetails() {
-    this.router.navigate(['/products', this.product.id]);
+    this.router.navigate(['/products'], { queryParams: this.product});
   }
 }

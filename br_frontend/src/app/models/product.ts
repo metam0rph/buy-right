@@ -1,23 +1,29 @@
 
 export class Product{
-    id:string;
-    name:string;
+    id:number;
+    sku:string;
     imageUrl: string[]
+    name:string;
+    description:string;
+    stockQuantity:number;
+    categoryName:string;
     originalPrice:number;
     discountPercentage:number;
-    description: string;
     category:string;
     rating:number;
 
     constructor(
-        id:string,
-    name:string,
-    imageUrl: string[],
-    originalPrice:number,
-    discountPercentage:number,
-    description: string,
-    category:string,
-    rating:number
+      id:number,
+      sku:string,
+      imageUrl: string[],
+      name:string,
+      description:string,
+      stockQuantity:number,
+      categoryName:string,
+      originalPrice:number,
+      discountPercentage:number,
+      category:string,
+      rating:number
       ) {
         this.id = id;
         this.name = name;
@@ -27,9 +33,12 @@ export class Product{
         this.description = description;
         this.category = category;
         this.rating = rating;
+        this.sku = sku;
+        this.stockQuantity = stockQuantity;
+        this.categoryName = categoryName;
       }
     
-     getDiscountedPrice(): number {
+    getDiscountedPrice(): number {
         return this.originalPrice - (this.originalPrice * this.discountPercentage) / 100;
       }
 }

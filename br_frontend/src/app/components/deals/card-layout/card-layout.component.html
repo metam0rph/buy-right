@@ -7,10 +7,12 @@
     </div>
     <div class="price-info">
       <span class="price">₹{{ product.getDiscountedPrice() }}</span>
+      <div *ngIf="product.discountPercentage">
       <span class="original-price">₹{{ product.originalPrice }}</span>
-      <span class="discount" *ngIf="product.discountPercentage">
+      <span class="discount">
         ({{ product.discountPercentage }}% off)
       </span>
+    </div>
     </div>
   </mat-card-content>
   <mat-card-actions class="custom-actions">

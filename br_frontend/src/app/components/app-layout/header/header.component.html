@@ -9,9 +9,11 @@
   </button>
   <button mat-icon-button aria-label="Example icon-button with heart icon">
     <mat-icon>favorite</mat-icon>
+    <span *ngIf="favoriteCount > 0" class="badge">{{ favoriteCount }}</span>
   </button>
   <button mat-icon-button aria-label="Example icon-button with heart icon">
     <mat-icon>shopping_cart</mat-icon>
+    <span *ngIf="cartCount > 0" class="badge">{{ cartCount }}</span>
   </button>
 </mat-toolbar>
 
