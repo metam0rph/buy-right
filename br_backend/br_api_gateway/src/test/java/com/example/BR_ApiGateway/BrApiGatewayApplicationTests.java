@@ -1,10 +1,10 @@
-package com.metam0rph.br_discovery_server;
+package com.example.BR_ApiGateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BrDiscoveryServerApplicationTests {
+class BrApiGatewayApplicationTests {
 
 	@Test
 	void contextLoads() {
