@@ -13,14 +13,15 @@ export class CardLayoutComponent{
   @Input() product!: Product;
   @Output() addToWishlist = new EventEmitter<Product>();
 
-  constructor (private router: Router, private cartService: CartService){}
+  constructor (private router: Router, private cartService: CartService){
+    
+  }
   getStars(rating: number): number[] {
     return Array(Math.round(rating)).fill(0);
   }
 
   buyNow(event: Event): void {
-    event.stopPropagation(); // Prevents the card click event from firing
-    // Implement buy now logic
+    event.stopPropagation();
   }
 
   toggleFavorite(event: Event): void {

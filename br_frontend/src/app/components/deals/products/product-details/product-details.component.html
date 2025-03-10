@@ -27,11 +27,11 @@
     <p class="product-description">{{ product.description }}</p>
     
     <div class="product-price">
-      <span class="discounted-price">₹{{ product.getDiscountedPrice() | number: '1.2-2' }}</span>
+        <span class="discounted-price">₹{{ product.getDiscountedPrice() | number: '1.2-2' }}</span>
       <div  *ngIf="product.discountPercentage">
-      <span class="original-price">₹{{ product.originalPrice | number: '1.2-2' }}</span>
-      <span class="discount-badge">{{ product.discountPercentage }}% OFF</span>
-    </div>
+        <span class="original-price">₹{{ product.originalPrice | number: '1.2-2' }}</span>
+        <span class="discount-badge">{{ product.discountPercentage }}% OFF</span>
+      </div>
     </div>
     
     <div class="product-rating">
