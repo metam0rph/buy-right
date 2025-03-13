@@ -32,6 +32,8 @@ import {
   NguItemComponent,
   NguTileComponent,
 } from '@ngu/carousel';
+import { LogInComponent } from './components/auth/log-in/log-in.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,10 @@ import {
     FilterBarComponent,
     CardLayoutComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    LogInComponent,
+    RegisterComponent
+
   ],
   imports: [
     BrowserModule,
@@ -74,6 +79,8 @@ import {
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [
     provideClientHydration(),

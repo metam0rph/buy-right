@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="toolbar">
+<mat-toolbar color="primary" class="toolbar" *ngIf="this.isLoggedIn">
   <button mat-icon-button (click)="toggleSidenav()" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
@@ -15,10 +15,13 @@
     <mat-icon>shopping_cart</mat-icon>
     <span *ngIf="cartCount > 0" class="badge">{{ cartCount }}</span>
   </button>
+  <button mat-icon-button aria-label="Example icon-button with heart icon" (click) ="logout()">
+    <mat-icon>login</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" position="start" [(opened)]="opened" class="sidenav">
+  <mat-sidenav #sidenav mode="side" position="start" [(opened)]="opened" class="sidenav" *ngIf="this.isLoggedIn">
     <mat-nav-list>
       <a mat-list-item routerLink="deals">
         <img src="/assets/images/deal.ico" alt="Deals Icon" class="custom-icon" />
